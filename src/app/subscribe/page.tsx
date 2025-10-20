@@ -4,10 +4,6 @@
 import Link from 'next/link';
 import { useState, FormEvent } from 'react';
 
-// --- 關鍵設定：請將這裡的 URL 換成您自己的 API Gateway 叫用 URL ---
-const API_ENDPOINT = 'https://a5mcq6ugoi.execute-api.ap-southeast-2.amazonaws.com/subscribe';
-// --------------------------------------------------------------------
-
 // 整個訂閱頁面
 export default function SubscribePage() {
   // 使用 React State 來管理表單的輸入值
@@ -34,12 +30,25 @@ export default function SubscribePage() {
     setMessage('');
     setIsError(false);
 
+  // 從環境變數讀取 API URL 和金鑰
+  const apiEndpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+  if (!apiEndpoint || !apiKey) {
+    console.error("API 端點或金鑰未設定！");
+    setMessage("系統設定錯誤，請稍後再試。");
+    setIsError(true);
+    setIsSubmitting(false);
+    return;
+  }
+
     try {
       // 使用 fetch API 向我們的後端發送 POST 請求
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-api-key': apiKey,
         },
         body: JSON.stringify({
           email: email,
