@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "LazyNews AI",
-  description: "AI 驅動的自動化新聞總結",
+  description: "AI 驅動的自動化新聞總結(本服務開發中)",
 };
 
 export default function RootLayout({
