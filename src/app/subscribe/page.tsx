@@ -44,7 +44,7 @@ export default function SubscribePage() {
 
     try {
       // 使用 fetch API 向我們的後端發送 POST 請求
-      const response = await fetch(API_ENDPOINT, {
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
