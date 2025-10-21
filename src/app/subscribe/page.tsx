@@ -83,7 +83,7 @@ export default function SubscribePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8">
       {/* 導覽列 */}
       <header className="fixed top-0 w-full p-4 flex justify-between items-center bg-gray-800 shadow-lg z-10">
         <h1 className="text-3xl font-bold text-sky-400">LAZYNEWS<span className="text-white">AI</span></h1>
